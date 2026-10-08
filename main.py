@@ -1,10 +1,7 @@
 import speech_recognition as sr
 
-# Create a recognizer object
 recognizer = sr.Recognizer()
 
-
-# Use the microphone
 with sr.Microphone() as source:
     print("Adjusting for background noise...")
     recognizer.adjust_for_ambient_noise(source, duration=1)
@@ -12,7 +9,6 @@ with sr.Microphone() as source:
     print("Listening...")
     audio = recognizer.listen(source)
 
-# Convert speech to text
 try:
     text = recognizer.recognize_google(audio, language="en-IN")
 
@@ -25,6 +21,7 @@ except sr.UnknownValueError:
 except sr.RequestError:
     print("Sorry, the speech recognition service is unavailable.")
 
+# Supported languages...
 """ languages={"Hindi":"hi-IN",
 "Telugu":"te-IN",
 "Tamil":"ta-IN",
